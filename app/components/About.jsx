@@ -1,5 +1,6 @@
 import React from "react";
 import { urlFor } from "../../lib/client";
+import Image from "next/image";
 
 const About = ({ about }) => {
   const imageAsset = about?.image?.[0]?.asset?._ref;
@@ -39,12 +40,15 @@ const About = ({ about }) => {
               </div>
             </div>
             <div className="relative sm:w-[90%] min-h-[450px] h-full flex-1 bg-gray-100 mb-12">
-              <img
+              <Image
                 src={urlFor({
                   _type: "image",
                   asset: { _ref: imageAsset },
                 }).url()}
-                className="absolute inset-0 w-full h-full object-cover"
+                alt="Image description about BPM"
+                fill
+                style={{ objectFit: "cover" }}
+                className="absolute inset-0"
               />
             </div>
           </div>
