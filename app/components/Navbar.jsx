@@ -1,31 +1,28 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
 import { IoCloseOutline } from "react-icons/io5";
 
 const Navbar = () => {
-  const [nav, setNav] = useState(false); // State to track the mobile menu
-  const [showNavbar, setShowNavbar] = useState(true); // State to track navbar visibility
-  const [lastScrollY, setLastScrollY] = useState(0); // State to track the last scroll position
+  const [nav, setNav] = useState(false);
+  const [showNavbar, setShowNavbar] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
-  const handleNav = () => {
-    setNav(!nav); // Toggle the mobile menu
-  };
+  const handleNav = () => setNav(!nav);
 
-  const controlNavbar = () => {
+  const controlNavbar = useCallback(() => {
     if (typeof window !== "undefined") {
       if (window.scrollY < lastScrollY) {
-        // Scrolling up
         setShowNavbar(true);
       } else {
-        // Scrolling down
         setShowNavbar(false);
       }
       setLastScrollY(window.scrollY);
     }
-  };
+  }, [lastScrollY]);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -34,7 +31,7 @@ const Navbar = () => {
         window.removeEventListener("scroll", controlNavbar);
       };
     }
-  }, [lastScrollY]);
+  }, [controlNavbar]);
 
   return (
     <>
@@ -49,7 +46,13 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-24 relative">
           {/* Logo */}
           <div className="ml-2 mr-20 z-[100]">
-            <img src="/assets/logo.svg" alt="Logo" className="w-48 ml-2" />
+            <Image
+              src="/assets/logo.svg"
+              alt="Company Logo"
+              width={192}
+              height={0}
+              className="ml-2"
+            />
           </div>
 
           {/* Desktop Menu */}
@@ -100,7 +103,7 @@ const Navbar = () => {
             <ul className="text-white mt-24 border-t border-primary">
               <Link href="/">
                 <li
-                  onClick={handleNav} // Close menu when an item is clicked
+                  onClick={handleNav}
                   className="hover:border-white pl-8 p-4 border-b border-primary"
                 >
                   HOME
