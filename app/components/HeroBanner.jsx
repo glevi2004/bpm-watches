@@ -1,4 +1,5 @@
 import { urlFor } from "../../lib/client";
+import Image from "next/image";
 
 const HeroBanner = ({ heroBanner }) => {
   // Ensure you extract the asset reference correctly
@@ -12,9 +13,11 @@ const HeroBanner = ({ heroBanner }) => {
           <span className="block text-white">{heroBanner.lowerText}</span>
         </h1>
         <div className="absolute left-0 bottom-0 h-1/2 w-2/3 md:w-1/2 bg-gray-400">
-          <img
+          <Image
             src={urlFor({ _type: "image", asset: { _ref: imageAsset } }).url()}
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-none w-full h-full object-cover"
+            alt="Hero Banner"
+            layout="fill" // ensure it fills parent containder
+            className="transform max-w-none w-full h-full object-cover"
           />
         </div>
       </div>
