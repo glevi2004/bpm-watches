@@ -40,16 +40,22 @@ const About = ({ about }) => {
               </div>
             </div>
             <div className="relative sm:w-[90%] min-h-[450px] h-full flex-1 bg-gray-100 mb-12">
-              <Image
-                src={urlFor({
-                  _type: "image",
-                  asset: { _ref: imageAsset },
-                }).url()}
-                alt="Image description about BPM"
-                fill
-                style={{ objectFit: "cover" }}
-                className="absolute inset-0"
-              />
+              {imageAsset ? (
+                <Image
+                  src={urlFor({
+                    _type: "image",
+                    asset: { _ref: imageAsset },
+                  }).url()}
+                  alt="Image description about BPM"
+                  fill
+                  style={{ objectFit: "cover" }}
+                  className="absolute inset-0"
+                />
+              ) : (
+                <div className="flex items-center justify-center bg-gray-200 text-gray-500">
+                  Image not available
+                </div>
+              )}
             </div>
           </div>
         </div>
