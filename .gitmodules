@@ -1,0 +1,3 @@
+[submodule "studio-bpm_watches"]
+	path = studio-bpm_watches
+	url = git@github.com:glevi2004/studio-bpm_watches.git
