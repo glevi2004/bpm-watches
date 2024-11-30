@@ -7,6 +7,7 @@ import { Navigation, Pagination, A11y } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import Image from "next/image";
 import ContactButton from "./ContactButton";
 
 // Helper function to format price
@@ -79,14 +80,18 @@ const Watch = ({ watch }) => {
               >
                 {watch.image.map((slide) => (
                   <SwiperSlide key={slide._key}>
-                    <img
-                      src={urlFor({
-                        _type: "image",
-                        asset: { _ref: slide?.asset?._ref },
-                      })}
-                      className="w-full h-full object-cover"
-                      alt="Watch Slide"
-                    />
+                    <div className="w-full h-full relative">
+                      <Image
+                        src={urlFor({
+                          _type: "image",
+                          asset: { _ref: slide?.asset?._ref },
+                        }).url()}
+                        alt={`Image of ${watch.name || "a watch"}`}
+                        fill
+                        style={{ objectFit: "cover" }}
+                        className="rounded-md"
+                      />
+                    </div>
                   </SwiperSlide>
                 ))}
               </Swiper>
