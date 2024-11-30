@@ -16,7 +16,8 @@ const HeroBanner = ({ heroBanner }) => {
           <Image
             src={urlFor({ _type: "image", asset: { _ref: imageAsset } }).url()}
             alt="Hero Banner"
-            layout="fill" // ensure it fills parent containder
+            fill
+            style={{ objectFit: "cover" }} // ensure it fills parent containder
             className="transform max-w-none w-full h-full object-cover"
           />
         </div>
