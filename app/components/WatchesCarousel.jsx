@@ -8,6 +8,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Link from "next/link";
+import Image from "next/image";
 
 const formatPrice = (price) => {
   return price
@@ -52,33 +53,33 @@ const WatchesCarousel = ({ watches }) => {
           width: "85%",
         }}
       >
-        {[watches][0].map((slide) => {
-          return (
-            <SwiperSlide key={slide.name}>
-              <div className="relative rounded-lg">
-                <Link href={`./watch/${slide.slug.current}`}>
-                  <div className="relative overflow-hidden rounded-lg group">
-                    <img
-                      src={urlFor({
-                        _type: "image",
-                        asset: { _ref: slide?.image?.[0]?.asset?._ref },
-                      })}
-                      className="h-[480px] w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
-                      alt={slide.name}
-                    />
-                  </div>
-                </Link>
-                {/* Watch name and price */}
-                <div className="absolute bottom-0 w-full bg-black bg-opacity-60 p-3 text-center text-white">
-                  <h3 className="text-lg font-semibold">{slide.name}</h3>
-                  <p className="text-md text-gray-300">
-                    {formatPrice(slide.price)}
-                  </p>
+        {watches.map((slide) => (
+          <SwiperSlide key={slide.name}>
+            <div className="relative rounded-lg">
+              <Link href={`./watch/${slide.slug.current}`}>
+                <div className="relative overflow-hidden rounded-lg group h-[480px] w-full">
+                  <Image
+                    src={urlFor({
+                      _type: "image",
+                      asset: { _ref: slide?.image?.[0]?.asset?._ref },
+                    }).url()}
+                    alt={slide.name}
+                    fill
+                    style={{ objectFit: "cover" }}
+                    className="transition-transform duration-500 ease-in-out group-hover:scale-110"
+                  />
                 </div>
+              </Link>
+              {/* Watch name and price */}
+              <div className="absolute bottom-0 w-full bg-black bg-opacity-60 p-3 text-center text-white">
+                <h3 className="text-lg font-semibold">{slide.name}</h3>
+                <p className="text-md text-gray-300">
+                  {formatPrice(slide.price)}
+                </p>
               </div>
-            </SwiperSlide>
-          );
-        })}
+            </div>
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   );

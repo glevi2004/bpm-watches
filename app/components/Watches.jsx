@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { urlFor } from "@/lib/client";
 
 const formatPrice = (price) => {
@@ -13,12 +14,12 @@ const formatPrice = (price) => {
 const Watches = ({ watches }) => {
   const [selectedManufacturer, setSelectedManufacturer] = useState("All");
 
-  // Extract unique manufacturers
+  // get unique manufacturers
   const manufacturers = [
     ...new Set(watches.map((watch) => watch.manufacturer)),
   ];
 
-  // Filter watches based on manufacturer
+  // filter watches based on manufacturer
   const filteredWatches =
     selectedManufacturer === "All"
       ? watches
@@ -30,7 +31,7 @@ const Watches = ({ watches }) => {
       <div className="flex flex-wrap gap-4 mb-6 justify-center mt-8">
         <button
           onClick={() => setSelectedManufacturer("All")}
-          className={`text-lg px-2  pb-1 transition-colors duration-300 border-b-2 ${
+          className={`text-lg px-2 pb-1 transition-colors duration-300 border-b-2 ${
             selectedManufacturer === "All"
               ? "border-white text-white"
               : "border-transparent hover:border-blue-400 hover:text-blue-400"
@@ -62,14 +63,16 @@ const Watches = ({ watches }) => {
             className="relative bg-gray-800 rounded-lg overflow-hidden shadow-md transition-transform duration-500 ease-in-out hover:scale-105"
           >
             <Link href={`./watch/${watch.slug.current}`}>
-              <div className="relative overflow-hidden">
-                <img
+              <div className="relative overflow-hidden h-[400px] w-full">
+                <Image
                   src={urlFor({
                     _type: "image",
                     asset: { _ref: watch?.image?.[0]?.asset?._ref },
-                  })}
-                  className="h-[400px] w-full object-cover transition-transform duration-500 ease-in-out hover:scale-110"
+                  }).url()}
                   alt={watch.name}
+                  fill
+                  style={{ objectFit: "cover" }}
+                  className="transition-transform duration-500 ease-in-out hover:scale-110"
                 />
               </div>
             </Link>
