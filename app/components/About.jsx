@@ -4,11 +4,11 @@ import Image from "next/image";
 
 const About = ({ about }) => {
   const imageAsset = about?.image?.[0]?.asset?._ref;
-
+  console.log(imageAsset);
   return (
     <div id="about">
       {/* About Section */}
-      <div className="w-full md:h-screen flex items-center justify-center h-[1100px] flex-wrap">
+      <div className="w-full md:h-screen flex items-center justify-center h-[1200px] flex-wrap">
         <div className="w-[80vw] flex justify-center flex-col max-w-[1100px]">
           {/* Divisor */}
           {/* <div className="mb-6 block h-0 border-t border-2 border-primary w-1/3"></div> */}
@@ -40,22 +40,16 @@ const About = ({ about }) => {
               </div>
             </div>
             <div className="relative sm:w-[90%] min-h-[450px] h-full flex-1 bg-gray-100 mb-12">
-              {imageAsset ? (
-                <Image
-                  src={urlFor({
-                    _type: "image",
-                    asset: { _ref: imageAsset },
-                  }).url()}
-                  alt="Image description about BPM"
-                  fill
-                  style={{ objectFit: "cover" }}
-                  className="absolute inset-0"
-                />
-              ) : (
-                <div className="flex items-center justify-center bg-gray-200 text-gray-500">
-                  Image not available
-                </div>
-              )}
+              <Image
+                src={urlFor({
+                  _type: "image",
+                  asset: { _ref: imageAsset },
+                }).url()}
+                alt="Image description about BPM"
+                fill
+                style={{ objectFit: "cover" }}
+                className="absolute inset-0"
+              />
             </div>
           </div>
         </div>
