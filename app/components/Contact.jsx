@@ -12,7 +12,7 @@ const Contact = () => {
       <div className="w-full h-screen flex items-center justify-center overflow-hidden">
         <div className="relative w-[90vw] flex flex-col max-w-[1000px]">
           {/* Divider */}
-          <div className="block h-0 border-t border-2 border-primary w-1/3"></div>
+          <div className=" mt-20 md:mt-0 block h-0 border-t border-2 border-primary w-1/3"></div>
 
           <div className="mt-8 text-white leading-loose">
             {/* Headings */}
@@ -40,7 +40,7 @@ const Contact = () => {
             </div>
 
             {/* Buttons */}
-            <div className="mt-8 flex flex-wrap gap-4 justify-center">
+            <div className="mt-8 flex flex-wrap gap-4 justify-center mb-20">
               <WhatsappButton useLabel={true} />
               <InstaButton useLabel={true} />
               <EmailButton useLabel={true} />
