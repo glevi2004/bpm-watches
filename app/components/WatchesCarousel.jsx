@@ -9,6 +9,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Link from "next/link";
 import Image from "next/image";
+import WatchesButton from "./WatchesButton";
 
 const formatPrice = (price) => {
   return price
@@ -17,13 +18,12 @@ const formatPrice = (price) => {
 };
 
 const WatchesCarousel = ({ watches }) => {
+  console.log(watches);
   return (
     <div className="flex flex-col justify-center items-center text-white">
       <div className="w-[85vw] flex justify-start mb-4">
         <Link href="/watches">
-          <button className="w-36 rounded-md text-lg md:text-xl border py-2 px-4 border-white hover:bg-white hover:text-black transition-colors duration-500 ease-in-out">
-            Watches
-          </button>
+          <WatchesButton />
         </Link>
       </div>
 
@@ -66,8 +66,15 @@ const WatchesCarousel = ({ watches }) => {
                     alt={slide.name}
                     fill
                     style={{ objectFit: "cover" }}
-                    className="transition-transform duration-500 ease-in-out group-hover:scale-110"
+                    className={`${
+                      slide.sold ? "opacity-40" : ""
+                    } transition-transform duration-500 ease-in-out group-hover:scale-110`}
                   />
+                  {slide.sold && (
+                    <div className="absolute top-2 right-2 bg-black text-white text-md px-4 py-1 rounded-full">
+                      Sold
+                    </div>
+                  )}
                 </div>
               </Link>
               {/* Watch name and price */}

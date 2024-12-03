@@ -7,17 +7,26 @@ const HeroBanner = ({ heroBanner }) => {
 
   return (
     <>
-      <div className="w-full h-[calc(100vh-6rem)] relative flex items-center justify-center overflow-hidden">
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 z-20">
-          <span className="block text-[#c6c6c6]">{heroBanner.upperText}</span>
-          <span className="block text-white">{heroBanner.lowerText}</span>
-        </h1>
-        <div className="absolute left-0 bottom-0 h-1/2 w-2/3 md:w-1/2 bg-gray-400">
+      <div className="w-full h-[calc(100vh-6rem)] flex flex-col md:flex-row">
+        {/* Left: Text */}
+        <div className="w-full md:w-1/2 h-1/2 md:h-full flex items-center justify-center">
+          <div className="text-left">
+            <h1 className="mt-24 mb-4 md:mt-0 ml-8 text-5xl lg:text-6xl font-bold text-white">
+              <span className="block text-[#c6c6c6]">
+                {heroBanner.upperText}
+              </span>
+              <span className="block">{heroBanner.lowerText}</span>
+            </h1>
+          </div>
+        </div>
+
+        {/* Right: Image */}
+        <div className="w-full md:w-1/2 h-full relative">
           <Image
             src={urlFor({ _type: "image", asset: { _ref: imageAsset } }).url()}
             alt="Hero Banner"
             fill
-            style={{ objectFit: "cover" }} // ensure it fills parent containder
+            style={{ objectFit: "cover" }} // ensure it fills the parent container
             className="transform max-w-none w-full h-full object-cover"
           />
         </div>
@@ -25,4 +34,5 @@ const HeroBanner = ({ heroBanner }) => {
     </>
   );
 };
+
 export default HeroBanner;

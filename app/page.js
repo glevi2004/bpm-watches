@@ -8,7 +8,9 @@ import Footer from "./components/Footer";
 import WatchesCarousel from "./components/WatchesCarousel";
 
 export default async function Home() {
-  const watchesQuery = '*[_type == "product"]';
+  // query to gets newest watches first, and sold ones last
+  const watchesQuery =
+    '*[_type == "product"] | order(sold asc, _createdAt desc)';
   const watchesData = await client.fetch(watchesQuery);
 
   const bannerQuery = '*[_type == "banner"]';

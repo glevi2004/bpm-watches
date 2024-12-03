@@ -31,7 +31,10 @@ const Watch = ({ watch }) => {
     { key: "strapMaterial", label: "Material da Pulseira" },
     { key: "boxMaterial", label: "Material da Caixa" },
     { key: "boxSize", label: "Tamanho da Caixa" },
+    { key: "boxThickness", label: "Expessura da Caixa" },
   ];
+
+  console.log(watch);
 
   return (
     <div className="text-white bg-[#1e1e1e]">
@@ -116,10 +119,10 @@ const Watch = ({ watch }) => {
             {section2Details.map(({ key, label }, index) => (
               <div
                 key={index}
-                className="flex items-center justify-between bg-gray-700 p-4 rounded-md shadow-md"
+                className="flex items-center justify-between border-2  border-primary p-4 rounded-md shadow-md"
               >
-                <p className="font-semibold">{label}</p>
-                <p className="font-normal text-gray-300">
+                <p className="font-semibold text-white">{label}</p>
+                <p className="font-normal text-gray-200">
                   {key === "price"
                     ? formatPrice(watch[key])
                     : watch[key] !== undefined && watch[key] !== null
@@ -132,7 +135,7 @@ const Watch = ({ watch }) => {
 
           {/* Call-to-Action */}
           <div className="text-center mt-8">
-            <ContactButton />
+            <ContactButton watchInfo={watch} />
           </div>
         </div>
       </div>

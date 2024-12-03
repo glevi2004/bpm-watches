@@ -15,9 +15,13 @@ const Navbar = () => {
 
   const controlNavbar = useCallback(() => {
     if (typeof window !== "undefined") {
-      if (window.scrollY < lastScrollY) {
+      // always show navbar at the top of the page
+      if (window.scrollY === 0) {
         setShowNavbar(true);
-      } else {
+        // 10px trshhold before the navbar hides or shows
+      } else if (window.scrollY < lastScrollY - 10) {
+        setShowNavbar(true);
+      } else if (window.scrollY > lastScrollY + 10) {
         setShowNavbar(false);
       }
       setLastScrollY(window.scrollY);
@@ -61,13 +65,13 @@ const Navbar = () => {
               <Link href="/">Home</Link>
             </li>
             <li className="hover:text-white">
-              <Link href="/about">About</Link>
+              <Link href="/about">Sobre</Link>
             </li>
             <li className="hover:text-white">
-              <Link href="/contact">Contact</Link>
+              <Link href="/contact">Contato</Link>
             </li>
             <li className="hover:text-white mr-5">
-              <Link href="/watches">Watches</Link>
+              <Link href="/watches">Produtos</Link>
             </li>
           </ul>
 
@@ -114,7 +118,7 @@ const Navbar = () => {
                   onClick={handleNav}
                   className="hover:border-white pl-8 p-4 border-b border-primary"
                 >
-                  ABOUT
+                  SOBRE
                 </li>
               </Link>
               <Link href="/contact">
@@ -122,7 +126,7 @@ const Navbar = () => {
                   onClick={handleNav}
                   className="hover:border-white pl-8 p-4 border-b border-primary"
                 >
-                  CONTACT
+                  CONTATO
                 </li>
               </Link>
               <Link href="/watches">
@@ -130,7 +134,7 @@ const Navbar = () => {
                   onClick={handleNav}
                   className="hover:border-white pl-8 p-4 border-b border-primary"
                 >
-                  WATCHES
+                  PRODUTOS
                 </li>
               </Link>
             </ul>

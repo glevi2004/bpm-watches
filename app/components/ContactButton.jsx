@@ -17,9 +17,12 @@ const ContactButton = ({ watchInfo }) => {
   return (
     <button
       onClick={handleClick}
-      className="w-52 rounded-md text-lg md:text-xl border py-3 px-4 border-white hover:bg-white hover:text-black transition duration-500 ease-in-out"
+      disabled={watchInfo.sold}
+      className={`${
+        watchInfo.sold ? "cursor-not-allowed opacity-30" : ""
+      } w-52 rounded-md text-lg md:text-xl border py-3 px-4 border-white hover:bg-white hover:text-black transition duration-500 ease-in-out`}
     >
-      Entre em Contato
+      {watchInfo.sold ? "Indisponível" : "Entre em Contato"}
     </button>
   );
 };

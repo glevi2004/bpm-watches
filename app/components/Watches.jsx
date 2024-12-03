@@ -72,8 +72,15 @@ const Watches = ({ watches }) => {
                   alt={watch.name}
                   fill
                   style={{ objectFit: "cover" }}
-                  className="transition-transform duration-500 ease-in-out hover:scale-110"
+                  className={`${
+                    watch.sold ? "opacity-40" : ""
+                  } transition-transform duration-500 ease-in-out hover:scale-110`}
                 />
+                {watch.sold && (
+                  <div className="absolute top-2 right-2 bg-black text-white text-md px-4 py-1 rounded-full">
+                    Sold
+                  </div>
+                )}
               </div>
             </Link>
             {/* Watch name and price */}

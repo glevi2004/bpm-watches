@@ -1,4 +1,9 @@
 import React from "react";
+import WhatsappButton from "./buttons/WhatsappButton";
+import InstaButton from "./buttons/InstaButton";
+import PhoneButton from "./buttons/PhoneButton";
+import EmailButton from "./buttons/EmailButton";
+import Button from "./buttons/Button";
 
 const Contact = () => {
   return (
@@ -36,18 +41,10 @@ const Contact = () => {
 
             {/* Buttons */}
             <div className="mt-8 flex flex-wrap gap-4 justify-center">
-              <button className="rounded-md text-sm md:text-lg border py-2 px-3 md:py-2 md:px-4 border-white hover:bg-white hover:text-black transition duration-500 ease-in-out">
-                WhatsApp
-              </button>
-              <button className="rounded-md text-sm md:text-lg border py-2 px-3 md:py-2 md:px-4 border-white hover:bg-white hover:text-black transition duration-500 ease-in-out">
-                Instagram
-              </button>
-              <button className="rounded-md text-sm md:text-lg border py-2 px-3 md:py-2 md:px-4 border-white hover:bg-white hover:text-black transition duration-500 ease-in-out">
-                Telefone
-              </button>
-              <button className="rounded-md text-sm md:text-lg border py-2 px-3 md:py-2 md:px-4 border-white hover:bg-white hover:text-black transition duration-500 ease-in-out">
-                E-mail
-              </button>
+              <WhatsappButton useLabel={true} />
+              <InstaButton useLabel={true} />
+              <EmailButton useLabel={true} />
+              <PhoneButton useLabel={true} />
             </div>
           </div>
         </div>

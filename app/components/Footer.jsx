@@ -1,9 +1,10 @@
 import React from "react";
 import Image from "next/image";
-import { FaWhatsapp } from "react-icons/fa";
-import { MdLocalPhone } from "react-icons/md";
-import { FaInstagram } from "react-icons/fa";
-import { MdOutlineEmail } from "react-icons/md";
+import Button from "./buttons/Button";
+import WhatsappButton from "./buttons/WhatsappButton";
+import InstaButton from "./buttons/InstaButton";
+import EmailButton from "./buttons/EmailButton";
+import PhoneButton from "./buttons/PhoneButton";
 
 const Footer = () => {
   return (
@@ -18,13 +19,13 @@ const Footer = () => {
         />
       </div>
       <ul
-        className="flex gap-6 -mt-10 text-[#d3d3d3] transition:colors duration-500 ease-in-out"
+        className="flex gap-5 -mt-9 text-[#d3d3d3] transition:colors duration-500 ease-in-out"
         style={{ width: "12rem" }}
       >
-        <FaWhatsapp className="flex-1 hover:text-white" size={48} />
-        <FaInstagram className="flex-1 hover:text-white" size={48} />
-        <MdOutlineEmail className="flex-1 hover:text-white" size={48} />
-        <MdLocalPhone className="flex-1 hover:text-white" size={48} />
+        <WhatsappButton useIcon={true} />
+        <InstaButton useIcon={true} />
+        <EmailButton useIcon={true} />
+        <PhoneButton useIcon={true} />
       </ul>
     </footer>
   );
