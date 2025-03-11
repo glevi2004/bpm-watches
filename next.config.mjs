@@ -1,8 +1,7 @@
 /** @type {import('next').NextConfig} */
-// next.config.mjs
-
-export default {
+const nextConfig = {
   reactStrictMode: true,
+  output: "export", // Enables static export
   images: {
     remotePatterns: [
       {
@@ -13,3 +12,5 @@ export default {
     ],
   },
 };
+
+export default nextConfig;

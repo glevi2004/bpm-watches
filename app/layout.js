@@ -8,6 +8,8 @@ export const metadata = {
   description: "Veja e conheça a BPM Watches e seus produtos.",
 };
 
+export const dynamic = "force-static";
+
 export default function RootLayout({ children }) {
   return (
     <html lang="pt-BR">
