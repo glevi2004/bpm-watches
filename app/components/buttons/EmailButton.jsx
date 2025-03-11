@@ -1,17 +1,19 @@
 import React from "react";
 import Button from "./Button";
 import { MdOutlineEmail } from "react-icons/md";
+import { client } from "@/lib/client";
 
-const EmailButton = ({ useIcon, useLabel }) => {
+export default async function EmailButton({ useIcon, useLabel }) {
+  const emailQuery = '*[_type == "contactInfo"]';
+  const emailData = await client.fetch(emailQuery);
+
   return (
     <div>
       <Button
         label={useLabel ? "E-mail" : null}
         icon={useIcon ? <MdOutlineEmail size={36} /> : null}
-        href="mailto:leviramosgabriel2021@gmail.com?subject=Hello&body=Hi there!"
+        href={`mailto:${emailData[0].email}?subject=Hello&body=Hi there!`}
       />
     </div>
   );
-};
-
-export default EmailButton;
+}

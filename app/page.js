@@ -21,10 +21,10 @@ export default async function Home() {
 
   return (
     <div>
-      <HeroBanner heroBanner={bannerData.length && bannerData[0]}></HeroBanner>
-      <About about={aboutData.length && aboutData[0]}></About>
+      <HeroBanner heroBanner={bannerData.length && bannerData[0]} />
+      <About about={aboutData.length && aboutData[0]} />
       <WatchesCarousel watches={watchesData.length && watchesData} />
-      <Contact></Contact>
+      <Contact />
     </div>
   );
 }

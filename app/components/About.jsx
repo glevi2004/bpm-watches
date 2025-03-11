@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const About = ({ about }) => {
   const imageAsset = about?.image?.[0]?.asset?._ref;
-  console.log(imageAsset);
+
   return (
     <div id="about">
       {/* About Section */}

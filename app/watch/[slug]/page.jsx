@@ -2,6 +2,11 @@ import { client } from "@/lib/client"; // Your Sanity client
 import { notFound } from "next/navigation";
 import Watch from "@/app/components/Watch";
 
+export const metadata = {
+  title: "Produto | BPM Watches",
+  description: "Veja as informações do produto selecionado",
+};
+
 export default async function WatchPage({ params }) {
   const { slug } = params; // capture slug from the URL
 

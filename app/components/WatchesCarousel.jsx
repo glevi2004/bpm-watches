@@ -18,7 +18,6 @@ const formatPrice = (price) => {
 };
 
 const WatchesCarousel = ({ watches }) => {
-  console.log(watches);
   return (
     <div className="flex flex-col justify-center items-center text-white">
       <div className="w-[85vw] flex justify-start mb-4">

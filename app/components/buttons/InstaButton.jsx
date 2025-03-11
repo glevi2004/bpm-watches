@@ -1,15 +1,17 @@
 import React from "react";
 import Button from "./Button";
 import { FaInstagram } from "react-icons/fa";
+import { client } from "@/lib/client";
 
-const InstaButton = ({ useIcon, useLabel }) => {
+export default async function InstaButton({ useIcon, useLabel }) {
+  const contactQuery = '*[_type == "contactInfo"]';
+  const contactData = await client.fetch(contactQuery);
+
   return (
     <Button
       label={useLabel ? "Instagram" : null}
       icon={useIcon ? <FaInstagram size={36} /> : null}
-      href="https://www.instagram.com/bpm.watches/"
+      href={contactData[0].intagramLink}
     />
   );
-};
-
-export default InstaButton;
+}

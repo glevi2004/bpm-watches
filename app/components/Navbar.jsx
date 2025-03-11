@@ -50,13 +50,15 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-24 relative">
           {/* Logo */}
           <div className="ml-2 mr-20 z-[100]">
-            <Image
-              src="/assets/logo.svg"
-              alt="Company Logo"
-              width={192}
-              height={0}
-              className="ml-2"
-            />
+            <Link href="/">
+              <Image
+                src="/assets/logo.svg"
+                alt="Company Logo"
+                width={192}
+                height={0}
+                className="ml-2"
+              />
+            </Link>
           </div>
 
           {/* Desktop Menu */}
@@ -67,11 +69,11 @@ const Navbar = () => {
             <li className="hover:text-white">
               <Link href="/about">Sobre</Link>
             </li>
-            <li className="hover:text-white">
-              <Link href="/contact">Contato</Link>
-            </li>
             <li className="hover:text-white mr-5">
               <Link href="/watches">Produtos</Link>
+            </li>
+            <li className="hover:text-white">
+              <Link href="/contact">Contato</Link>
             </li>
           </ul>
 

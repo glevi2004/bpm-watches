@@ -1,17 +1,19 @@
 import React from "react";
 import Button from "./Button";
 import { MdLocalPhone } from "react-icons/md";
+import { client } from "@/lib/client";
 
-const PhoneButton = ({ useIcon, useLabel }) => {
+export default async function PhoneButton({ useIcon, useLabel }) {
+  const contactQuery = '*[_type == "contactInfo"]';
+  const contactData = await client.fetch(contactQuery);
+
   return (
     <div>
       <Button
         label={useLabel ? "Telefone" : null}
         icon={useIcon ? <MdLocalPhone size={36} /> : null}
-        href="tel:+19788105602"
+        href={`tel:+${contactData[0].phoneNumber}`}
       />
     </div>
   );
-};
-
-export default PhoneButton;
+}

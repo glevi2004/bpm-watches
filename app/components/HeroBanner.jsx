@@ -12,7 +12,7 @@ const HeroBanner = ({ heroBanner }) => {
         <div className="w-full md:w-1/2 h-1/2 md:h-full flex items-center justify-center">
           <div className="text-left">
             <h1 className="mt-24 mb-4 md:mt-0 ml-8 text-3xl md:text-5xl lg:text-6xl font-bold text-white">
-              <span className="block text-[#c6c6c6]">
+              <span className="block text-[#83ab92]">
                 {heroBanner.upperText}
               </span>
               <span className="block">{heroBanner.lowerText}</span>
