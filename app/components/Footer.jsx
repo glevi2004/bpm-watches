@@ -7,8 +7,10 @@ import EmailButton from "./buttons/EmailButton";
 import PhoneButton from "./buttons/PhoneButton";
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="h-[200px] bg-black flex flex-col justify-center items-center">
+    <footer className="h-[200px] bg-black flex flex-col justify-center items-center text-white">
       <div className="-mt-8">
         <Image
           src="/assets/logo.svg"
@@ -27,6 +29,9 @@ const Footer = () => {
         <EmailButton useIcon={true} />
         <PhoneButton useIcon={true} />
       </ul>
+      <p className="mt-8 text-gray-400 text-sm">
+        © {currentYear} BPM Watches. Todos os direitos reservados.
+      </p>
     </footer>
   );
 };
